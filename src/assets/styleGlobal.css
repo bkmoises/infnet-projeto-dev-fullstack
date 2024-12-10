@@ -1,0 +1,199 @@
+:root,
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #474a51;
+  color: white;
+  padding: 16px;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  background-color: #f4f4f4;
+  margin-top: 8px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #474a51;
+  padding: 8px 16px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  background-color: #ddd;
+}
+
+main {
+  padding: 16px;
+  min-height: 400px;
+}
+
+.top {
+  background: #3f3f3f;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+}
+
+.top span {
+  margin: 1px 3px;
+}
+
+.top button {
+  color: black;
+  padding: 8px;
+  display: flex;
+  justify-content: center;;
+}
+
+.cadastro {
+  background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  min-height: 200px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+
+.cadastro .field {
+  color: white;
+  background: #3f3f3f;
+  flex: 1;
+  max-width: 400px;
+}
+
+.cadastro .field label {
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.cadastro .field input {
+  border: none;
+  padding: 8px;
+  width: 100%;
+}
+
+.publicar {
+  color: white;
+  flex: 1;
+  max-width: 400px;
+}
+
+.publicar button {
+  border: none;
+  padding: 8px 16px;
+  background: #3f3f3f;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.publicar button:hover {
+  opacity: 0.8;
+}
+
+.btn-cadastrar {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 10px 20px;
+  background-color: #5cb85c;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+table th,
+table td {
+  border: 1px solid #eee;
+  padding: 8px;
+  text-align: center;
+}
+
+table th {
+  background-color: #474a51;
+  color: white;
+}
+
+table td a {
+  text-decoration: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.btn {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-editar {
+  background-color: #5bc0de;
+}
+
+.btn-excluir {
+  background-color: #d9534f;
+}
+
+.comentario {
+  text-align: left;
+}
+
+.nota {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 16px;
+  background-color: #474a51;
+  color: #ddd;
+}
+
+.errorMsg {
+  text-align: center;
+}
+
+.menu a.active {
+  background-color: #474a51;
+  color: white;
+}
