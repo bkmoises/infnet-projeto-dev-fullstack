@@ -84,15 +84,7 @@ const Header: React.FC = () => {
                 </li>
               </>
             ) : (
-              <li>
-                <Link
-                  to="/login"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  aria-current="page"
-                >
-                  Logar
-                </Link>
-              </li>
+              <p></p>
             )}
           </ul>
         </div>

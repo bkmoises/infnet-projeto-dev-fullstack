@@ -1,1 +1,1 @@
-# infnet-projeto-dev-fullstack
+# INFNET - Desenvolvimento Full Stack com React e Spring Boot 
