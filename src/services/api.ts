@@ -22,6 +22,12 @@ export interface Car {
   pais: string;
 }
 
+interface SearchParams {
+  pais?: string;
+  modelo?: string;
+  fabricante?: string;
+}
+
 const isValidJwt = (token) => {
   if (!token) return false;
 
@@ -54,52 +60,61 @@ const validateJwtBeforeRequest = async (requestFn) => {
 };
 
 export const getDataApi = async (): Promise<Car[]> => {
-  return validateJwtBeforeRequest(() => 
+  return validateJwtBeforeRequest(() =>
     handleRequest(() => http.get('/carros'), 'Não foi possível obter os dados')
   );
 };
 
 export const deleteCarApi = async (id: string): Promise<void> => {
-  return validateJwtBeforeRequest(() => 
+  return validateJwtBeforeRequest(() =>
     handleRequest(() => http.delete(`/carros/${id}`), 'Não foi possível excluir o carro')
   );
 };
 
 export const createCarApi = async (data: Car): Promise<Car> => {
-  return validateJwtBeforeRequest(() => 
+  return validateJwtBeforeRequest(() =>
     handleRequest(() => http.post('/carros', data), 'Não foi possível criar esse carro')
   );
 };
 
 export const updateCarApi = async (data: Car): Promise<Car> => {
-  return validateJwtBeforeRequest(() => 
+  return validateJwtBeforeRequest(() =>
     handleRequest(() => http.put(`/carros/${data.id}`, data), 'Não foi possível atualizar as informações do carro')
   );
 };
 
 export const getDataByIdApi = async (id: string): Promise<Car> => {
-  return validateJwtBeforeRequest(() => 
+  return validateJwtBeforeRequest(() =>
     handleRequest(() => http.get(`/carros/${id}`), 'Carro não encontrado')
   );
 };
 
+export const getAllCarsByPageApi = async (page: number, size: number): Promise<Car[]> => {
+  return validateJwtBeforeRequest(() =>
+    handleRequest(() => http.get(`/carros?page=${page}&size=${size}`), 'Não foi possível obter os dados')
+  );
+};
 
-// export const getDataApi = async (): Promise<Car[]> => {
-//   return handleRequest(() => http.get('/carros'), 'Não foi possível obter os dados');
-// };
+export const exportDataApi = async () => {
+  return validateJwtBeforeRequest(async () => {
+    try {
+      const response = await http.get(`/carros/export-cars`, {
+        responseType: 'blob',
+      });
 
-// export const deleteCarApi = async (id: string): Promise<void> => {
-//   return handleRequest(() => http.delete(`/carros/${id}`), 'Não foi possível excluir o carro');
-// };
+      const blob = new Blob([response.data], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'carros.csv';
+      document.body.appendChild(link);
+      link.click();
 
-// export const createCarApi = async (data: Car): Promise<Car> => {
-//   return handleRequest(() => http.post('/carros', data), 'Não foi possível criar esse carro');
-// };
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
 
-// export const updateCarApi = async (data: Car): Promise<Car> => {
-//   return handleRequest(() => http.put(`/carros/${data.id}`, data), 'Não foi possível atualizar as informações do carro');
-// };
-
-// export const getDataByIdApi = async (id: string): Promise<Car> => {
-//   return handleRequest(() => http.get(`/carros/${id}`), 'Carro não encontrado');
-// };
+    } catch (error) {
+      throw new Error("Não foi possível exportar os dados");
+    }
+  });
+};

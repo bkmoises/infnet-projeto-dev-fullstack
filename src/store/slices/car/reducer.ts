@@ -10,14 +10,28 @@ interface Car {
   pais?: string;
 }
 
+interface Pagination {
+  page: number;
+  size: number;
+  totalItems: number;
+  totalPages: number;
+}
+
 interface CarState {
   cars: Car[];
   car: Car;
+  pagination: Pagination;
 }
 
 const initialState: CarState = {
   cars: [],
   car: {},
+  pagination: {
+    page: 0,
+    size: 10,
+    totalItems: 0,
+    totalPages: 0,
+  },
 };
 
 export const carSlice = createSlice({
@@ -27,15 +41,21 @@ export const carSlice = createSlice({
     setCars: (state, action: PayloadAction<Car[]>) => {
       state.cars = action.payload;
     },
+    appendCars: (state, action: PayloadAction<Car[]>) => {
+      state.cars = [...state.cars, ...action.payload];
+    },
     setCar: (state, action: PayloadAction<Car>) => {
       state.car = action.payload;
     },
     resetCar: (state) => {
       state.car = {};
     },
+    setPagination: (state, action: PayloadAction<Pagination>) => {
+      state.pagination = action.payload;
+    },
   },
 });
 
-export const { setCars, setCar, resetCar } = carSlice.actions;
+export const { setCars, appendCars, setCar, resetCar, setPagination } = carSlice.actions;
 
 export default carSlice.reducer;

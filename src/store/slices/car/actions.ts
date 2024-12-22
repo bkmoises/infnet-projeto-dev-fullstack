@@ -1,13 +1,43 @@
 import { Dispatch } from 'redux';
 import Swal from 'sweetalert2';
-import { getDataApi, getDataByIdApi, updateCarApi, createCarApi, deleteCarApi } from '../../../services/api';
+import { getDataApi, getDataByIdApi, updateCarApi, createCarApi, deleteCarApi, getAllCarsByPageApi } from '../../../services/api';
 import { Car } from './reducer';
-import { setCars, setCar } from './reducer';
+import { setCars, setCar, setPagination } from './reducer';
 
 interface Action<T> {
     type: string;
     payload: T;
 }
+
+export const getAllCarsPaged = (page: number, size: number) => async (dispatch: Dispatch) => {
+    try {
+      const response = await getAllCarsByPageApi(page, size);
+  
+      const cars: Car[] = response; 
+  
+      const totalItems: number = 80;
+      const totalPages = Math.ceil(totalItems / size);
+  
+      const pagination = {
+        page,
+        size,
+        totalItems,
+        totalPages,
+      };
+  
+      dispatch(setCars(cars));
+      dispatch(setPagination(pagination));
+  
+    } catch (error) {
+      console.error(`Erro ao obter carros: ${error}`);
+      Swal.fire({
+        title: 'Erro ao obter carros',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
+  };
+
 
 export const getAllCars = () => async (dispatch: Dispatch<Action<Car[]>>) => {
     try {
@@ -58,7 +88,7 @@ export const saveForm = (editForm = false) => async (dispatch: Dispatch<Action<C
             icon: 'success',
             confirmButtonText: 'OK'
         });
-        
+
     } catch (error) {
         Swal.fire({
             title: 'Não foi possível registrar essas informações',

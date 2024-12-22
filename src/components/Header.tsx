@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { exportDataApi } from "../services/api"
 
 const Header: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -15,6 +16,15 @@ const Header: React.FC = () => {
     setIsAuthenticated(false);
     navigate("/login");
   };
+
+  const handleExport = async () => {
+    try {
+      await exportDataApi();
+    } catch (error) {
+      return
+    }
+  };
+  
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -73,6 +83,14 @@ const Header: React.FC = () => {
                   >
                     Cadastrar
                   </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={handleExport}
+                    className="block py-2 px-3 text-gray-700 rounded md:p-0 dark:text-white hover:text-blue-500"
+                  >
+                    Exportar Dados
+                  </button>
                 </li>
                 <li>
                   <button
