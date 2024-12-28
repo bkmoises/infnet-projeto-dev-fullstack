@@ -60,7 +60,7 @@ Para executar a aplicação localmente, siga as etapas abaixo:
    ```bash
    npm start
    ```
-   Isso executa a aplicação e você pode acessá-la em `http://localhost:8089` (ou outra porta, se configurada).
+   Isso executa a aplicação e você pode acessá-la em `http://localhost:8091` (ou outra porta, se configurada).
 
 
 ## Acessando o projeto em produção
