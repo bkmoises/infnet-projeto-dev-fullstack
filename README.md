@@ -42,6 +42,9 @@ Para executar a aplicação localmente, siga as etapas abaixo:
 1. **Execução do Backend**
    Para execução do projeto, será necessário executar o backend utilizado. Acesso o repositório [https://github.com/leoinfnet/trabalho_final_react_noite](https://github.com/leoinfnet/trabalho_final_react_noite) e siga as instruções do README.md para execução.
 
+
+   **Atenção**: É extremamente importante que a aplicação backend esteja rodando na porta 8080.
+   
 3. **Clone o Repositório**:
    Abra o terminal e clone o repositório onde o projeto está armazenado:
    ```bash
