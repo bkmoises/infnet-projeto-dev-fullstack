@@ -45,8 +45,8 @@ Para executar a aplicação localmente, siga as etapas abaixo:
 3. **Clone o Repositório**:
    Abra o terminal e clone o repositório onde o projeto está armazenado:
    ```bash
-   git clone https://github.com/bkmoises/infnet-projeto-dev-react
-   cd infnet-projeto-dev-react
+   git clone https://github.com/bkmoises/infnet-projeto-dev-fullstack
+   cd infnet-projeto-dev-fullstack 
    ```
 
 4. **Instale as Dependências**:
@@ -61,3 +61,8 @@ Para executar a aplicação localmente, siga as etapas abaixo:
    npm start
    ```
    Isso executa a aplicação e você pode acessá-la em `http://localhost:8089` (ou outra porta, se configurada).
+
+
+## Acessando o projeto em produção
+   Acesse:
+   [https://fullstackproject-infnet.netlify.app/](https://fullstackproject-infnet.netlify.app/)
