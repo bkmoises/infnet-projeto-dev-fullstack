@@ -91,9 +91,18 @@ export const getDataByIdApi = async (id: string): Promise<Car> => {
 
 export const getAllCarsByPageApi = async (page: number, size: number): Promise<Car[]> => {
   return validateJwtBeforeRequest(() =>
-    handleRequest(() => http.get(`/carros?page=${page}&size=${size}`), 'Não foi possível obter os dados')
+    handleRequest(() =>
+      http.get('/carros', {
+        headers: {
+          'page': `${page}`,
+          'size': `${size}`,
+        },
+      }),
+      'Não foi possível obter os dados'
+    )
   );
 };
+
 
 export const exportDataApi = async () => {
   return validateJwtBeforeRequest(async () => {
